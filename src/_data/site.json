@@ -1,0 +1,17 @@
+{
+    "title": "Sublime Miscellany",
+    "email": "digitalscholarship@swarthmore.edu",
+    "description": "Exhibit featuring newly acquired local works in the Swarthmore College Libraries' artist book collection",
+    "url": "https://ds-pages.swarthmore.edu",
+    "author": "Digital Scholarship at Swarthmore College Libraries",
+    "github_username":  "swat-ds",
+    "twitter_username": "swatlibrary",
+    "lang": "en",
+    "assets_url": "https://ds-pages.swarthmore.edu/sublime-miscellany/works/",
+    "navigation": [
+     { "title": "Home",
+        "url": "/" },
+    { "title": "About",
+        "url": "/" }
+    ]
+}

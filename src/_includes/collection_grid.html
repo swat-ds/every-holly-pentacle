@@ -1,0 +1,17 @@
+<!-- Collection Grid -->
+
+<section class="row collection-grid">
+
+    {% for work in collections.works %}
+
+    <div class="column collection-item" style="background-image:url('{{ work.data.thumb | prepend: site.assets_url }}')">
+        <a href="{{ work.url | url }}">
+        <span class="collection-item-title">{{ work.data.title }}</span>
+        <span class="collection-item-author">{{ work.fields.Author }}</span>
+        </a>
+    </div>
+
+    {% endfor %}
+
+
+</section>
