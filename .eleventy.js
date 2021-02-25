@@ -1,6 +1,7 @@
 const fs = require('fs-extra');
 const sass = require('sass');
 const MarkdownIt = require('markdown-it');
+const settings = require('./settings.json');
 
 module.exports = function(eleventyConfig) {
 
@@ -25,14 +26,14 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy('src/assets');
   eleventyConfig.addPassthroughCopy( {'src/icons/*': '/'} );
   eleventyConfig.addPassthroughCopy( {
-    'node_modules/viewerjs/dist/min.js': '/assets/js/'
+    'node_modules/viewerjs/dist/*min.js': '/assets/js/'
   } );
   eleventyConfig.addPassthroughCopy( {
     'node_modules/viewerjs/dist/*min.css': '/assets/css/'
   } );
 
   /* * * filters * * */
-  eleventyConfig.addFilter('thumbify', (d) {
+  eleventyConfig.addFilter('thumbify', (d) => {
     let out = (d !== undefined) 
       ? `thumbs/${d.split('.')[0]}-sm.${d.split('.')[1]}` 
       : '';
@@ -52,15 +53,15 @@ module.exports = function(eleventyConfig) {
     fs.outputFile('dist/assets/css/main.css', result.css)
   });
 
-
   /* * * return build * * */
   return {
     // set input and output paths
+    
     dir: {
-    input: 'src',
-    output: 'dist'
+    input: settings.build.inputDirectory,
+    output: settings.build.outputDirectory
   },
 
-  // pathPrefix: '/hyper-local/'
+    pathPrefix: settings.build.pathPrefix
   };
 };

@@ -39,12 +39,14 @@ There are more minimal approaches but this is the minimum for our requirements. 
 - [viewerjs](https://github.com/fengyuanchen/viewerjs)
 - jQuery (sigh, just makes things easier)
 - Minimal scrollview jQuery function
+- [Favicons/PWA App Icons](https://www.favicon-generator.org/)
 
 ## Usage
 
+- Site and build settings in `/settings.json`
 - `npm install --save-dev`
-- `npm start` (for development)
-- `npm run build`
+- `npx eleventy --serve` (for development)
+- `npx eleventy`
 
 ### Data
 
@@ -54,20 +56,20 @@ There are more minimal approaches but this is the minimum for our requirements. 
 
 ### Todo :white_check_mark:
 
-- Cache busting
-- Search, e.g. [this strategy by @cfjedimaster](https://www.raymondcamden.com/2021/01/22/using-pre-built-lunr-indexes-with-eleventy)
-- Image processing
-- Static CMS
-- Testing
+- [ ] Cache busting
+- [ ] Search, e.g. [this strategy by @cfjedimaster](https://www.raymondcamden.com/2021/01/22/using-pre-built-lunr-indexes-with-eleventy)
+- [ ] Image processing
+- [ ] Static CMS
+- [ ] Testing
 - [x] Integrate sass into Eleventy build
+- [ ] Head meta best practices for Zotero, Hypothesis, SEO, etc.
+- [ ] Simple category filter
 
-#### Peculiar notes about Airtable:
+#### Detritus
 
-- got to API docs for Airtable base, open console
-  - `window.application.tables[0].sampleRows.map(d => d.fields)`
 - regex to capture filenames alone
   - `\{[\n ]+"id"[\w\W]+?"filename": (.+)[\w\W]+?\s{10}\}\n\s{8}\}`
-
-Found out belatedly Airtable API Docs `sampleRows` truncated description field. Had to create API key and access via `curl` then transform.
-
-`d = data.map(function(d) { d.fields.Photos = d.fields.Photos.map(function(e) { return e.filename }); return d; })`
+- Airtable, visit generated table API Docs create API key and access via `curl` then transform.
+- `d = data.map(function(d) { d.fields.Photos = d.fields.Photos.map(function(e) { return e.filename }); return d; })`
+- Image transform 
+  - `magick mogrify -path OUTPUT_PATH -filter Triangle -define filter:support=2 -thumbnail OUTPUT_WIDTH -unsharp 0.25x0.25+8+0.065 -dither None -posterize 136 -quality 82 -define jpeg:fancy-upsampling=off -define png:compression-filter=5 -define png:compression-level=9 -define png:compression-strategy=1 -define png:exclude-chunk=all -interlace none -colorspace sRGB -strip INPUT_PATH`
