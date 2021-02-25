@@ -4,22 +4,19 @@
   "description": "Eleventy port of hyper local template",
   "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "watch:sass": "sass  --load-path ./src/_sass --no-source-map --watch src/assets/css:dist/assets/css",
-    "watch:eleventy": "eleventy --serve",
-    "build:sass-site": "sass --load-path ./src/_sass --no-source-map ./src/assets/css/main.scss dist/assets/css/main.css",
-    "build:sass": "npm-run-all --parallel build:sass-site",
-    "build:eleventy": "eleventy",
-    "start": "ELEVENTY_ENV=dev npm-run-all build:sass --parallel watch:*",
-    "build": "ELEVENTY_ENV=prod npm-run-all build:sass build:eleventy"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "@bulbil",
   "license": "ISC",
   "devDependencies": {
     "@11ty/eleventy": "^0.11.1",
+    "d3-fetch": "^2.0.0",
     "eleventy-plugin-typeset": "github:liamfiddler/eleventy-plugin-typeset",
+    "fs": "^0.0.1-security",
+    "node-fetch": "^2.6.1",
     "npm-run-all": "^4.1.5",
     "sass": "^1.32.7",
-    "typeset": "^0.2.9"
+    "typeset": "^0.2.9",
+    "viewerjs": "^1.9.0"
   }
 }

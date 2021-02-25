@@ -6,7 +6,6 @@ crossorigin="anonymous"></script>
 <script type="text/javascript" src="/assets/js/main.js" ></script>
 <script src="https://kit.fontawesome.com/e362474648.js" crossorigin="anonymous"></script>
 
-{% if page.fileSlug == "single" %}
-<script type="text/javascript" src="/assets/js/viewer.min.js" ></script>
-<script type="text/javascript" src="/assets/js/jquery-viewer.min.js" ></script>
+{% if page.fileSlug == "item" %}
+<script type="text/javascript" src="{{ '/assets/js/viewer.min.js' | url}}" ></script>
 {% endif %}

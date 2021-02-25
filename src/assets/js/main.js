@@ -14,9 +14,9 @@ $.fn.scrollView = function() {
 }
 
 $(function(){
-    var headHeight = $('header').height();
-    var panelHeight = $('.panel').height();
-    var image = $('#image-list');
+    const headHeight = $('header').height();
+    const panelHeight = $('.panel').height();
+    const images = document.getElementById('image-list')
 
     $(document).on('scroll', function(d){
 
@@ -30,9 +30,8 @@ $(function(){
 
     });
 
-    if( image.length ) {
-        console.log('fire')
-        image.viewer({
+    if( images.childElementCount ) {
+        const viewer = new Viewer(images, {
             backdrop: true,
             movable: false,
             toolbar: false

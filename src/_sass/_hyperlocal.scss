@@ -1,6 +1,5 @@
 /* Hyper Local Jekyll Theme */
 
-
 // One lonely mixin
 @mixin transition($property, $s: .25s, $timing: ease) {
 
@@ -28,6 +27,7 @@ a, h1, h2, h3, h4, h5, h6 {
 
     // height: 20rem;
     width: 100%;
+    max-width: 99vw;
     padding-top: 2rem;
     z-index: 99;
 

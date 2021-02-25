@@ -23,7 +23,8 @@ This project makes use of several eleventy features:
 - Computed URLs and paths (`url`, `pathPrefix`)
 - Register shortcodes for layout defaults (`addLayoutAlias`)
 - Set Markdown It markdown parser options
-- Sass and eleventy dev and build scripts in `package.json`
+- ~~Sass and eleventy dev and build scripts in `package.json`~~
+- Sass implemented in Eleventy build
 
 ***light(ish)!***
 
@@ -47,14 +48,25 @@ There are more minimal approaches but this is the minimum for our requirements. 
 
 ### Data
 
-Peculiar notes about Airtable:
+- JSON file in `_data` folder
+- Google Sheets feeds API (v3, so may :sunset:)
+- Whatever Eleventy plugin you can imagine
+
+### Todo :white_check_mark:
+
+- Cache busting
+- Search, e.g. [this strategy by @cfjedimaster](https://www.raymondcamden.com/2021/01/22/using-pre-built-lunr-indexes-with-eleventy)
+- Image processing
+- Static CMS
+- Testing
+- [x] Integrate sass into Eleventy build
+
+#### Peculiar notes about Airtable:
 
 - got to API docs for Airtable base, open console
   - `window.application.tables[0].sampleRows.map(d => d.fields)`
 - regex to capture filenames alone
   - `\{[\n ]+"id"[\w\W]+?"filename": (.+)[\w\W]+?\s{10}\}\n\s{8}\}`
-
-**2021-02-18**
 
 Found out belatedly Airtable API Docs `sampleRows` truncated description field. Had to create API key and access via `curl` then transform.
 

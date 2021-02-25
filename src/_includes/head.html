@@ -12,11 +12,10 @@
     <!-- Custom CSS -->
 
     <link rel="stylesheet" href="{{ '/assets/css/normalize.css' | url }}" type="text/css">
-    <link rel="stylesheet" href="{{ '/assets/css/main.css' | url }}?{{ site.time | date: "%Y%m%d%H%M" }}" type="text/css">
-
-    {% if page.fileSlug == "single" %}
+    {% if page.fileSlug == "item" %}
     <link rel="stylesheet" href="{{ '/assets/css/viewer.min.css' | url }}" type="text/css">
     {% endif %}
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | url }}?{{ site.time | date: "%Y%m%d%H%M" }}" type="text/css">
 
     <!-- Open Graph -->
     <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
