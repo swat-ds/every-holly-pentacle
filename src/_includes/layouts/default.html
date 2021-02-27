@@ -24,6 +24,7 @@
       {{ content }}
 
       {% if classes contains "facets" %}{% include collection_facets.html %}{% endif %}
+      {% if classes contains "sort" %}{% include collection_sort.html %}{% endif %}
 
       {% if classes contains "grid" %}{% include collection_grid.html %}{% endif %}
     </section>

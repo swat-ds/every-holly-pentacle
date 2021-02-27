@@ -3,10 +3,10 @@
   <p class="column footer-copyright">&#169;{{ "now" | date: "%Y" }} <a href="https://swarthmore.edu">Swarthmore College</a>
   </p>
   <p class="column">
-    Curated by Susan Dreher and Amy McColl, Curators of the Swarthmore College Book Arts + Private Press Collection.
+    {{ site.footer.text | markdownify }}
   </p>
   <p class="column footer-library"><a href="https://swarthmore.edu"> 
-    <img src="{{ 'logo_grayoutline_words.svg' | prepend: site.assets_path | relative_url }}" alt="Swarthmore College Libraries logo">
+    <img src="{{ site.footer.image | url }}" alt="Swarthmore College Libraries logo">
     </a>
   </p>
 
