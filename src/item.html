@@ -6,10 +6,10 @@ pagination:
     addAllPagesToCollections: true
 tags: items
 layout: "item"
-hi: {{ item.Work }}
 eleventyComputed:
     title: "{{ item.Work }}"
     author: "{{ item.Author }}"
+    date: "{{ item.Date }}"
     tag: "{{ item.Group }}"
     thumb: "{{ item.Photos[0] | thumbify }}"
 ---

@@ -13,18 +13,21 @@ $.fn.scrollView = function() {
     });
 }
 
-$(function(){
-    const headHeight = $('header').height();
-    const panelHeight = $('.panel').height();
-    const images = document.getElementById('image-list') || null;
-    
+function returnActiveFacets($el) {
     let activeFacets = [];
-    $('.facet-buttons button').each( (i,d) => {
+    $el.not('.inactive').each( (i,d) => {
         activeFacets.push(d.dataset.facet);
     })
 
-    $(document).on('scroll', function(d){
+    return activeFacets;
+}
 
+$(function(){
+    const images = document.getElementById('image-list') || null;
+    const $facets = $('.facet-buttons button');
+    const $sort = $('.sort-buttons button');
+
+    $(document).on('scroll', function(d){
         var currTop = $(this).scrollTop();
 
         if ( currTop > 100 ){
@@ -35,7 +38,7 @@ $(function(){
 
     });
 
-    if( images ) {
+    if (images) {
         const viewer = new Viewer(images, {
             backdrop: true,
             movable: false,
@@ -43,31 +46,40 @@ $(function(){
         });
     }
 
-    if (activeFacets.length) {
-        const $grid = $('.collection-grid').isotope({
+    if ($facets.length || $sort.length) {
+        let activeFacets = returnActiveFacets($facets);
+
+        const $grid = $('.collection-grid').isotope( {
             itemSelectors: '.collection-item',
-            layoutMode: 'fitRows'
-        })
+            layoutMode: 'fitRows',
+            getSortData: { 
+                author: (d) => $(d).data('author').split(' ')[1], 
+                date:'[data-date]'
+            }
+        });
 
-        $('.splash button').on('click', (d) => {
-            
+        $facets.on('click', (d) => {
             let currFacet = $(d.target).data('facet');
-            let currIndex = activeFacets.indexOf(currFacet);
-            console.log(activeFacets)
-            if (currIndex !== -1) {
-                activeFacets.splice( currIndex, 1 ) 
-            } else { 
-                activeFacets.push(currFacet); 
-            }
-            console.log('now:  ', activeFacets)
 
-            if (activeFacets.length) {
-                $(`.facet-buttons button[data-facet=${currFacet}]`).toggleClass('active');
-            } else {
-                $('.facet-buttons button').removeClass('active');
+            $facets.filter(`[data-facet=${currFacet}]`)
+                .toggleClass('inactive');
+            activeFacets = returnActiveFacets($facets);
+            if (activeFacets.length === 0) { 
+                $facets.removeClass('inactive');
             }
 
-            $grid.isotope( { filter: activeFacets.map( d => '.' + d).join(',') } );
+            $grid.isotope( { 
+                filter: activeFacets.map( d => '.' + d ).join(',')
+            });
+        });
+
+        $sort.on('click', (d) => {
+            let currSort = $(d.target).data('sort');
+
+            $sort.removeClass('inactive');                
+            $sort.not(`[data-sort=${currSort}]`).addClass('inactive');
+
+            $grid.isotope( { sortBy: currSort });
         });
     }
 });

@@ -244,18 +244,35 @@ footer {
 } 
 
 // Collection grid facet button
-.row.facet-buttons button{
+.row.facet-buttons,
+.row.sort-buttons {
+    margin-bottom: .5rem;
+
+    span { text-align: left; }
+}
+
+.row.facet-buttons button,
+.row.sort-buttons button{
+
+    white-space: unset;
+    padding: 0 !important;
+    margin-left: .5rem;
+    margin-right: .5rem;
 
     &:hover {
         background-color: $color-primary;
         border-color: $color-primary;
     }
 
-    &.active {
+    &.inactive {
         background-color: $color-secondary;
         border-color: $color-secondary;
         color: $color-initial;
         outline: 0;
+    }
+
+    @media screen and (min-width:40rem) {
+        max-width: 20%;
     }
 }
 

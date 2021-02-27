@@ -2,7 +2,7 @@
 
   {% for item in collections.items %}
 
-  <div class="column collection-item {{ item.data.tag | slug }}" style="background-image:url('{{ item.data.thumb | prepend: site.assets_url }}')">
+  <div class="column collection-item {{ item.data.tag | slug }}" data-date="{{ item.data.date }}" data-author="{{ item.data.author }}" style="background-image:url('{{ item.data.thumb | prepend: site.assets_url }}')">
       <a href="{{ item.url | url }}">
       <span class="collection-item-title">{{ item.data.title }}</span>
       <span class="collection-item-author">{{ item.data.author }}</span>

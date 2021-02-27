@@ -1,5 +1,6 @@
 <section class="row facet-buttons">
+  <span class="button button-clear column column-10">Filter</span>
   {% for tag in groupTags %}
-  <button data-facet="{{ tag | slug }}">{{ tag }}</button>
+  <button class="button column" data-facet="{{ tag.tag | slug }}">{{ tag.display }}</button>
   {% endfor %}
 </section>
