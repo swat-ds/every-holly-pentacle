@@ -19,12 +19,14 @@ module.exports = function(eleventyConfig) {
 
   /* * * layout aliases * * */
   eleventyConfig.addLayoutAlias('default', 'layouts/default.html');
-  eleventyConfig.addLayoutAlias('single', 'layouts/single.html');
-  eleventyConfig.addLayoutAlias('splash', 'layouts/splash.html');
+  eleventyConfig.addLayoutAlias('item', 'layouts/item.html');
 
   /* * * passthrough paths * * */
   eleventyConfig.addPassthroughCopy('src/assets');
   eleventyConfig.addPassthroughCopy( {'src/icons/*': '/'} );
+  eleventyConfig.addPassthroughCopy( {
+    'node_modules/isotope-layout/dist/*min.js': '/assets/js/'
+  } );
   eleventyConfig.addPassthroughCopy( {
     'node_modules/viewerjs/dist/*min.js': '/assets/js/'
   } );

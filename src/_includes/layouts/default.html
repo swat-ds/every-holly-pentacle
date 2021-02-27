@@ -22,6 +22,10 @@
 
     <section class="container">
       {{ content }}
+
+      {% if classes contains "facets" %}{% include collection_facets.html %}{% endif %}
+
+      {% if classes contains "grid" %}{% include collection_grid.html %}{% endif %}
     </section>
 
     {% include footer.html %}

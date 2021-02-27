@@ -1,0 +1,5 @@
+<section class="row facet-buttons">
+  {% for tag in groupTags %}
+  <button data-facet="{{ tag | slug }}">{{ tag }}</button>
+  {% endfor %}
+</section>

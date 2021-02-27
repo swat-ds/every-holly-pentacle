@@ -1,17 +1,14 @@
-<!-- Collection Grid -->
-
 <section class="row collection-grid">
 
-    {% for item in collections.items %}
+  {% for item in collections.items %}
 
-    <div class="column collection-item" style="background-image:url('{{ item.data.thumb | prepend: site.assets_url }}')">
-        <a href="{{ item.url | url }}">
-        <span class="collection-item-title">{{ item.data.title }}</span>
-        <span class="collection-item-author">{{ item.Author }}</span>
-        </a>
-    </div>
+  <div class="column collection-item {{ item.data.tag | slug }}" style="background-image:url('{{ item.data.thumb | prepend: site.assets_url }}')">
+      <a href="{{ item.url | url }}">
+      <span class="collection-item-title">{{ item.data.title }}</span>
+      <span class="collection-item-author">{{ item.data.author }}</span>
+      </a>
+  </div>
 
-    {% endfor %}
-
+  {% endfor %}
 
 </section>

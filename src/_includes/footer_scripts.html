@@ -6,6 +6,9 @@ crossorigin="anonymous"></script>
 <script type="text/javascript" src="/assets/js/main.js" ></script>
 <script src="https://kit.fontawesome.com/e362474648.js" crossorigin="anonymous"></script>
 
-{% if page.fileSlug == "item" %}
+{% if classes contains "facets" %}
+<script type="text/javascript" src="{{ '/assets/js/isotope.pkgd.min.js' | url}}" ></script>
+{% endif %}
+{% if classes contains "item" %}
 <script type="text/javascript" src="{{ '/assets/js/viewer.min.js' | url}}" ></script>
 {% endif %}

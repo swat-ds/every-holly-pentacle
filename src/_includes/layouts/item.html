@@ -1,0 +1,21 @@
+---
+layout: default
+classes: ['item']
+---
+<div class="row">
+  <div class="column work-images">
+      <ul id="image-list">
+          {% for i in item.Photos %}
+              <li><img src="{{ i | prepend: site.assets_url }}" alt="Image of {{ item.Work }} by {{ item.Author }}"></li>
+          {% endfor %}
+      </ul>
+  </div>
+  <div class="column work-meta">
+      <h2 class="work-title">{{ title }}</h2>
+      <span class="work-author-date">{{ item.Author }}, {{ item.Date }}</span>
+      <span class="work-call-number">{{ item["Call Number"] | markdownify }}</span>
+      <span class="work-description"><p>{{ item.Description | markdownify }}</p></span>
+      <span class="work-digital-version"><p>{{ item['Digital Version'] | markdownify }}</p></span>
+  </div>
+</div>
+

@@ -243,6 +243,22 @@ footer {
     }
 } 
 
+// Collection grid facet button
+.row.facet-buttons button{
+
+    &:hover {
+        background-color: $color-primary;
+        border-color: $color-primary;
+    }
+
+    &.active {
+        background-color: $color-secondary;
+        border-color: $color-secondary;
+        color: $color-initial;
+        outline: 0;
+    }
+}
+
 // Collection grid
 .collection-grid {
 

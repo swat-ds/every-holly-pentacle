@@ -11,12 +11,11 @@
   "devDependencies": {
     "@11ty/eleventy": "^0.11.1",
     "d3-fetch": "^2.0.0",
-    "eleventy-plugin-typeset": "github:liamfiddler/eleventy-plugin-typeset",
     "fs": "^0.0.1-security",
+    "isotope-layout": "^3.0.6",
     "node-fetch": "^2.6.1",
     "npm-run-all": "^4.1.5",
     "sass": "^1.32.7",
-    "typeset": "^0.2.9",
     "viewerjs": "^1.9.0"
   }
 }

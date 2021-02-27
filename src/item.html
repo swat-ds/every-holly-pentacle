@@ -1,31 +1,15 @@
 ---
 pagination:
-    data: "data-transform"
+    data: "collection.items"
     size: 1
     alias: "item"
     addAllPagesToCollections: true
 tags: items
-category: "{{ item.itemGroup }}"
-layout: "default"
+layout: "item"
+hi: {{ item.Work }}
 eleventyComputed:
     title: "{{ item.Work }}"
+    author: "{{ item.Author }}"
+    tag: "{{ item.Group }}"
     thumb: "{{ item.Photos[0] | thumbify }}"
 ---
-
-<div class="row">
-    <div class="column work-images">
-        <ul id="image-list">
-            {% for i in item.Photos %}
-                <li><img src="{{ i | prepend: site.assets_url }}" alt="Image of {{ item.Work }} by {{ item.Author }}"></li>
-            {% endfor %}
-        </ul>
-    </div>
-    <div class="column work-meta">
-        <h2 class="work-title">{{ title }}</h2>
-        <span class="work-author-date">{{ item.Author }}, {{ item.Date }}</span>
-        <span class="work-call-number">{{ item["Call Number"] | markdownify }}</span>
-        <span class="work-description"><p>{{ item.Description | markdownify }}</p></span>
-        <span class="work-digital-version"><p>{{ item['Digital Version'] | markdownify }}</p></span>
-    </div>
-</div>
-
