@@ -1,7 +1,7 @@
 {
-  "title": "Sublime Miscellany",
+  "title": "Hyper Local Eleventy Template",
   "email": "digitalscholarship@swarthmore.edu",
-  "description": "Exhibit featuring newly acquired local works in the Swarthmore College Libraries' artist book collection",
+  "description": "Example template for static exhibits for digital collections",
   "url": "https://ds-pages.swarthmore.edu",
   "author": "Digital Scholarship at Swarthmore College Libraries",
   "github_username":  "swat-ds",
@@ -9,7 +9,7 @@
   "lang": "en",
   "assets_url": "https://ds-pages.swarthmore.edu/sublime-miscellany/works/",
   "footer": {
-      "text": "Curated by Susan Dreher and Amy McColl, Curators of the Swarthmore College Book Arts + Private Press Collection.",
+      "text": "Footer text",
       "image": "/assets/images/logo_grayoutline_words.svg"
   },
   "navigation": [

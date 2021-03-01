@@ -7,10 +7,10 @@ crossorigin="anonymous"></script>
 {% for script in site.build.loadJS %}
   {% if script.pageClass%}
     {% if classes contains  script.pageClass %}
-    <script type="text/javascript" src="{{ script.file | prepend: '/assets/js/' | url}}" ></script>
+    <script type="text/javascript" src="{{ script.target | prepend: '/assets/js/' | url}}" ></script>
     {% endif %}
   {% else %}
-    <script type="text/javascript" src="{{ script | prepend: '/assets/js/' | url}}" ></script>
+    <script type="text/javascript" src="{{ script.target | prepend: '/assets/js/' | url}}" ></script>
   {% endif %}
 {% endfor %}
 
