@@ -17,21 +17,16 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.setLibrary('md', md);
   eleventyConfig.addWatchTarget('src/_sass/');
 
-  /* * * layout aliases * * */
-  eleventyConfig.addLayoutAlias('default', 'layouts/default.html');
-  eleventyConfig.addLayoutAlias('item', 'layouts/item.html');
-
   /* * * passthrough paths * * */
   eleventyConfig.addPassthroughCopy('src/assets');
   eleventyConfig.addPassthroughCopy( {'src/icons/*': '/'} );
-  eleventyConfig.addPassthroughCopy( {
-    'node_modules/isotope-layout/dist/*min.js': '/assets/js/'
-  } );
-  eleventyConfig.addPassthroughCopy( {
-    'node_modules/viewerjs/dist/*min.js': '/assets/js/'
-  } );
-  eleventyConfig.addPassthroughCopy( {
-    'node_modules/viewerjs/dist/*min.css': '/assets/css/'
+
+  settings.build.loadJS.forEach( (d) => {
+    if (d.nodePkg) {
+      eleventyConfig.addPassthroughCopy( { 
+        [`node_modules/${d.nodePkg}/dist/*min.js`]: '/assets/js/'
+      } );
+    }
   } );
 
   /* * * filters * * */
@@ -42,7 +37,7 @@ module.exports = function(eleventyConfig) {
     return out;
   });
   // [h/t @edjw](https://edjohnsonwilliams.co.uk/2019/05/04/replicating-jekylls-markdownify-filter-in-nunjucks-with-eleventy/)
-  eleventyConfig.addFilter('markdownify', d => md.render(d || '') );
+  eleventyConfig.addFilter( 'markdownify', d => md.render(d || '') );
 
   eleventyConfig.on('beforeBuild', () => {
     // Compile Sass

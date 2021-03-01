@@ -21,6 +21,11 @@
   "build": {
       "inputDirectory": "src",
       "outputDirectory": "dist",
-      "pathPrefix": ""
+      "pathPrefix": "",
+      "loadJS": [
+        { "target": "jquery.slim.min.js", "nodePkg": "jquery-slim"},
+        { "target": "viewer.min.js", "pageClass": "item", "nodePkg": "viewerjs"},
+        { "target": "isotope.pkgd.min.js", "pageClass": "facets", "nodePkg": "isotope-layout" }
+      ]    
   }
 }
