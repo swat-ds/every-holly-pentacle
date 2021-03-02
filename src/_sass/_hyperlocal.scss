@@ -127,7 +127,6 @@ footer {
 // Header
 .header header {
 
-    background-image: linear-gradient(rgba(255,255,255,.15), rgba(255,255,255,.8)), url('../images/OTW_Fairmount.png');
     position: relative;
     background-attachment: fixed;
     background-size: cover, 400%;
@@ -329,42 +328,44 @@ footer {
 // Search
 .search section.container {
     max-width: 4.6rem * 12;
+
+    .row {
+        display: flex;
+        justify-content: space-around;
+    }
 }
-.search section.container .row {
-    display: flex;
+
+
+.search #search-results {
+    flex-direction: column;
     justify-content: space-around;
 
-    &#search-results {
-        flex-direction: column;
-        justify-content: space-around;
+    li {
+        list-style: none;
+        margin-top: 1rem;
+        border-radius: 2px;
+        box-shadow: 0 0 .5rem rgba(#6a6a6a, 0.25);
 
-        li {
-            list-style: none;
-            margin-top: 1rem;
-            border-radius: 2px;
-            box-shadow: 0 0 .5rem rgba(#6a6a6a, 0.25);
+        div.work-thumbnail {
+            height: 4.6rem * 5;
+            background-repeat: no-repeat;
+            background-size: cover;
+            @include transition(opacity);
+        }
 
-            div.work-thumbnail {
-                height: 4.6rem * 5;
-                background-repeat: no-repeat;
-                background-size: cover;
-                @include transition(opacity);
-            }
+        span.work-title {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 1rem;
+        }
 
-            span.work-title {
-                font-weight: bold;
-                display: block;
-                margin-bottom: 1rem;
-            }
+        a {
+            text-decoration: none;
+            @include transition(opacity);
 
-            a {
-                text-decoration: none;
-                @include transition(opacity);
+            &:hover {
+                    opacity: .75;
 
-                &:hover {
-                        opacity: .75;
-
-                }
             }
         }
     }
