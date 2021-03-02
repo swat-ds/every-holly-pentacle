@@ -23,9 +23,10 @@
       "outputDirectory": "dist",
       "pathPrefix": "",
       "loadJS": [
-        { "target": "jquery.slim.min.js", "nodePkg": "jquery-slim"},
-        { "target": "viewer.min.js", "pageClass": "item", "nodePkg": "viewerjs"},
-        { "target": "isotope.pkgd.min.js", "pageClass": "facets", "nodePkg": "isotope-layout" }
+        { "nodePkg": "jquery" },
+        { "nodePkg": "fuse.js", "target": "fuse.basic.min.js"},
+        { "nodePkg": "viewerjs", "pageClass": "item" },
+        { "nodePkg": "isotope-layout", "pageClass": "facets" }
       ]    
   }
 }

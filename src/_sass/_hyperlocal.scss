@@ -295,7 +295,6 @@ footer {
     }
 
     .collection-item-title {
-        font-style: italic;
         font-weight: bold;
     }
 }
@@ -318,8 +317,55 @@ footer {
         margin-bottom: 1rem;
     }
 
+    h2.work-title {
+        font-weight: bold;
+    }
     & > span.work-artist-date {
         font-size: 2.2rem;
         line-height: 1.35;
+    }
+}
+
+// Search
+.search section.container {
+    max-width: 4.6rem * 12;
+}
+.search section.container .row {
+    display: flex;
+    justify-content: space-around;
+
+    &#search-results {
+        flex-direction: column;
+        justify-content: space-around;
+
+        li {
+            list-style: none;
+            margin-top: 1rem;
+            border-radius: 2px;
+            box-shadow: 0 0 .5rem rgba(#6a6a6a, 0.25);
+
+            div.work-thumbnail {
+                height: 4.6rem * 5;
+                background-repeat: no-repeat;
+                background-size: cover;
+                @include transition(opacity);
+            }
+
+            span.work-title {
+                font-weight: bold;
+                display: block;
+                margin-bottom: 1rem;
+            }
+
+            a {
+                text-decoration: none;
+                @include transition(opacity);
+
+                &:hover {
+                        opacity: .75;
+
+                }
+            }
+        }
     }
 }

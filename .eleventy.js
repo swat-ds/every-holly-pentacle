@@ -20,28 +20,36 @@ module.exports = function(eleventyConfig) {
   /* * * passthrough paths * * */
   eleventyConfig.addPassthroughCopy('src/assets');
   eleventyConfig.addPassthroughCopy( {'src/icons/*': '/'} );
-
+  eleventyConfig.addPassthroughCopy( {'src/_data/*.json': '/assets/js/'} );
+  // adds any node packages in settings.json build.loadJS array
   settings.build.loadJS.forEach( (d) => {
     if (d.nodePkg) {
       eleventyConfig.addPassthroughCopy( { 
         [`node_modules/${d.nodePkg}/dist/*min.js`]: '/assets/js/'
-      } );
+      });
     }
-  } );
+  });
 
   /* * * filters * * */
+  // example custom filter, returns thumbnail path from filename
   eleventyConfig.addFilter('thumbify', (d) => {
-    let out = (d !== undefined) 
+    let thumbPath = (d !== undefined) 
       ? `thumbs/${d.split('.')[0]}-sm.${d.split('.')[1]}` 
       : '';
-    return out;
+    return thumbPath;
+  });
+  // unnecessary custom filter for returning min.js file from node pkg dist
+  // folder from build.loadjs array, implemented in footer_scripts.html
+  eleventyConfig.addFilter('getNodeMinJS', (d) => {
+      return fs.readdirSync(`node_modules/${d}/dist`)
+                .filter( d => d.includes('.min.js'))[0]
   });
   // [h/t @edjw](https://edjohnsonwilliams.co.uk/2019/05/04/replicating-jekylls-markdownify-filter-in-nunjucks-with-eleventy/)
   eleventyConfig.addFilter( 'markdownify', d => md.render(d || '') );
 
   eleventyConfig.on('beforeBuild', () => {
     // Compile Sass
-    let result = sass.renderSync({
+    let result = sass.renderSync( {
       file: 'src/_sass/main.scss',
       sourceMap: false,
       outputStyle: 'expanded',
