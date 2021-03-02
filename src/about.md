@@ -5,6 +5,11 @@ classes: ['header']
 headerCaption: James Lancel McElhinney
 permalink: /about/
 templateEngineOverride: md
+headerImage: [
+  'linear-gradient(rgba(255,255,255,.15)', 
+  'rgba(255,255,255,.8))',
+  "url('/assets/images/OTW_Fairmount.png')"
+]
 ---
 
 Swarthmore College is home to a vibrant and continually growing collection of contemporary artists' books. The collection, with over 6,000 items dating back to 1540, is cataloged and available in Tripod. The Book Arts and Private Press Collection is committed to the acquisition of fine printing and artists' books, and strives to represent all aspects of the physical book including bookbinding, typography, letterpress and offset printing, hand papermaking, illustration, and book design.

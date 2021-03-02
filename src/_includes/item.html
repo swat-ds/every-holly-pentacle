@@ -5,9 +5,16 @@ classes: ['item']
 <div class="row">
   <div class="column work-images">
       <ul id="image-list">
-          {% for i in item.Photos %}
+
+        {% for i in item.Photos %}
+            {% if i contains 'mp4' %}
+                <video id="player" playsinline controls data-poster="/path/to/poster.jpg">
+                <source src="{{ i | prepend: site.assets_url }}" type="video/mp4" />
+                </video>
+            {% else %}
               <li><img src="{{ i | prepend: site.assets_url }}" alt="Image of {{ item.Work }} by {{ item.Author }}"></li>
-          {% endfor %}
+            {% endif %}
+        {% endfor %}
       </ul>
   </div>
   <div class="column work-meta">

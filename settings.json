@@ -26,6 +26,7 @@
         { "nodePkg": "jquery" },
         { "nodePkg": "fuse.js", "target": "fuse.basic.min.js"},
         { "nodePkg": "viewerjs", "pageClass": "item" },
+        { "nodePkg": "plyr", "pageClass": "item" },
         { "nodePkg": "isotope-layout", "pageClass": "facets" }
       ]    
   }

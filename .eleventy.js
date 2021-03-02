@@ -21,6 +21,8 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy('src/assets');
   eleventyConfig.addPassthroughCopy( {'src/icons/*': '/'} );
   eleventyConfig.addPassthroughCopy( {'src/_data/*.json': '/assets/js/'} );
+  eleventyConfig.addPassthroughCopy( {'node_modules/viewerjs/dist/*min.css': '/assets/css/'} );
+  eleventyConfig.addPassthroughCopy( {'node_modules/plyr/dist/*min.css': '/assets/js/'} );
   // adds any node packages in settings.json build.loadJS array
   settings.build.loadJS.forEach( (d) => {
     if (d.nodePkg) {
