@@ -35,10 +35,11 @@ module.exports = function(eleventyConfig) {
   /* * * filters * * */
   // example custom filter, returns thumbnail path from filename
   eleventyConfig.addFilter('thumbify', (d) => {
-    let thumbPath = (d !== undefined) 
-      ? `thumbs/${d.split('.')[0]}-sm.${d.split('.')[1]}` 
-      : '';
-    return thumbPath;
+    if (d !== undefined) {
+      let thumbPath = `thumbs/${d.split('.')[0]}-sm.`;
+      thumbPath += (d.split('.')[1] === 'mp4') ? 'jpg' : d.split('.')[1];
+      return thumbPath;
+    } else { return ''; }
   });
   // unnecessary custom filter for returning min.js file from node pkg dist
   // folder from build.loadjs array, implemented in footer_scripts.html

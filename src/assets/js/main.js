@@ -88,7 +88,7 @@ $(function(){
     if (images) {
         const viewer = new Viewer(images, {
             backdrop: true,
-            movable: false,
+            movable: true,
             toolbar: false
         });
     }
