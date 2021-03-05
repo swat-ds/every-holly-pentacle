@@ -36,8 +36,8 @@ module.exports = function(eleventyConfig) {
   // example custom filter, returns thumbnail path from filename
   eleventyConfig.addFilter('thumbify', (d) => {
     if (d !== undefined) {
-      let thumbPath = `thumbs/${d.split('.')[0]}-sm.`;
-      thumbPath += (d.split('.')[1] === 'mp4') ? 'jpg' : d.split('.')[1];
+      let thumbPath = `thumbs/${d.split('.')[0]}-sm.jpg`;
+      // thumbPath += (d.split('.')[1] === 'mp4') ? 'jpg' : d.split('.')[1];
       return thumbPath;
     } else { return ''; }
   });

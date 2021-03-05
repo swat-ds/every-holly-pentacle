@@ -12,7 +12,7 @@ classes: ['item']
                 <source src="{{ i | prepend: site.assets_url }}" type="video/mp4" />
                 </video>
             {% else %}
-              <li><img src="{{ i | prepend: site.assets_url }}" alt="Image of {{ item.Work }} by {{ item.Author }}"></li>
+              <li><img src="{{ i | replace: '.png', '.jpg' | prepend: site.assets_url }}" alt="Image of {{ item.Work }} by {{ item.Author }}"></li>
             {% endif %}
         {% endfor %}
       </ul>
