@@ -5,6 +5,7 @@
  */
 // until I figure out a way to simply grab global variables
 const pathPrefix = 'https://ds-pages.swarthmore.edu/dev/sublime-miscellany';
+// const pathPrefix = '';
 const thumbEndpoint = 'https://ds-pages.swarthmore.edu/sublime-miscellany/works/thumbs';
 
 // scroll view jQuery function
@@ -68,12 +69,13 @@ $(function(){
         data.forEach( (d,i) => { d.id = String(i+1).padStart(3,'000');} );
         fuse = new Fuse(data, fuseOptions);
         $searchBar.on('input', (e) => {
+            e.preventDefault();
             $searchResults.fadeOut(100).empty();
             fuse.search($(e.target).val()).slice(0,10).forEach( (d) => {
                 let result = `
 <li>
 <a class="row" href="${pathPrefix}/items/${d.item.id}.html">
-<div class="column work-thumbnail" style="background-image: url(${thumbEndpoint}/${d.item.fields.Photos[0].split('.')[0]}-sm.${d.item.fields.Photos[0].split('.')[1]});" alt="thumbnail of"></div>
+<div class="column work-thumbnail" style="background-image: url(${thumbEndpoint}/${d.item.fields.Photos[0].split('.')[0]}-sm.jpg);" alt="thumbnail of"></div>
 <div class="column">
 <span class="work-title">${d.item.fields.Work}</span>
 <span class="work-author">${d.item.fields.Author}</span>
@@ -110,17 +112,28 @@ $(function(){
         });
 
         $facets.on('click', (e) => {
-            let currFacet = $(e.target).data('facet');
-            $facets.filter(`[data-facet=${currFacet}]`)
-                .toggleClass('inactive');
-            activeFacets = returnActiveFacets($facets);
-            if (activeFacets.length === 0) { $facets.removeClass('inactive'); }
+            e.preventDefault();
+            let $currButton = $(e.target);
+            let currFacet = $currButton.data('facet');
+
+            if ($facets.filter('.inactive').length === 0) {
+                $facets.not(`[data-facet=${currFacet}]`).addClass('inactive');
+            } else if ( !$currButton[0].className.includes('inactive') ) {
+                $facets.removeClass('inactive');
+                currFacet = '';
+            } else {
+                $facets.not(`[data-facet=${currFacet}]`).
+                    addClass('inactive');
+                $currButton.removeClass('inactive');
+            }
+
             $grid.isotope( { 
-                filter: activeFacets.map( d => '.' + d ).join(',')
+                filter: (currFacet) ? '.' + currFacet : ''
             });
         });
 
         $sort.on('click', (e) => {
+            e.preventDefault();
             let currSort = $(e.target).data('sort');
             $sort.removeClass('inactive');                
             $sort.not(`[data-sort=${currSort}]`).addClass('inactive');
