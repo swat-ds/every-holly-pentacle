@@ -3,6 +3,9 @@
  * minimal jquery animations for landing page
  *
  */
+// until I figure out a way to simply grab global variables
+const pathPrefix = 'https://ds-pages.swarthmore.edu/dev/sublime-miscellany';
+const thumbEndpoint = 'https://ds-pages.swarthmore.edu/sublime-miscellany/works/thumbs';
 
 // scroll view jQuery function
 $.fn.scrollView = function() {
@@ -61,16 +64,16 @@ $(function(){
     });
 
     // Initialize fuse.js
-    $.getJSON('/assets/js/works.json').then( (data) => {
-        let endpoint = 'https://ds-pages.swarthmore.edu/sublime-miscellany/works/thumbs'
+    $.getJSON(`${pathPrefix}/assets/js/works.json`).then( (data) => {
+        data.forEach( (d,i) => { d.id = String(i+1).padStart(3,'000');} );
         fuse = new Fuse(data, fuseOptions);
         $searchBar.on('input', (e) => {
             $searchResults.fadeOut(100).empty();
             fuse.search($(e.target).val()).slice(0,10).forEach( (d) => {
                 let result = `
 <li>
-<a class="row" href="/items/${d.item.id}.html">
-<div class="column work-thumbnail" style="background-image: url(${endpoint}/${d.item.fields.Photos[0].split('.')[0]}-sm.${d.item.fields.Photos[0].split('.')[1]});" alt="thumbnail of"></div>
+<a class="row" href="${pathPrefix}/items/${d.item.id}.html">
+<div class="column work-thumbnail" style="background-image: url(${thumbEndpoint}/${d.item.fields.Photos[0].split('.')[0]}-sm.${d.item.fields.Photos[0].split('.')[1]});" alt="thumbnail of"></div>
 <div class="column">
 <span class="work-title">${d.item.fields.Work}</span>
 <span class="work-author">${d.item.fields.Author}</span>
