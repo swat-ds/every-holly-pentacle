@@ -1,23 +1,16 @@
 ---
 layout: default
 title: About
-classes: ['header']
-headerCaption: James Lancel McElhinney
+classes: ['header','about']
+headerCaption:
 permalink: /about/
-templateEngineOverride: md
 headerImage: [
-  'linear-gradient(rgba(255,255,255,.15)', 
-  'rgba(255,255,255,.8))',
-  "url('/assets/images/OTW_Fairmount.png')"
+  "url('/dev/sublime-miscellany/assets/images/butterfly-about.png')"
 ]
 ---
 
-Swarthmore College is home to a vibrant and continually growing collection of contemporary artists' books. The collection, with over 6,000 items dating back to 1540, is cataloged and available in Tripod. The Book Arts and Private Press Collection is committed to the acquisition of fine printing and artists' books, and strives to represent all aspects of the physical book including bookbinding, typography, letterpress and offset printing, hand papermaking, illustration, and book design.
+This exhibition features some of the notable and eclectic works that are part of the collections in the Swarthmore College Libraries Rare Book Room, a number of which were donated to the college by alumni. Among the works are the recently restored *Astronomicum Caesareum* (1540) with its beautiful hand-colored volvelles, a first edition of Mary Wollstonecraft’s *A Vindication of the Rights of Woman with Strictures on Political and Moral Subjects* (1792), a very rare first publication of Edgar Allan Poe’s *Murders in the Rue Morgue* (1843), numerous contemporary artists’ books including Ed Ruscha’s iconic *Twentysix Gasoline Stations* (1967), and a signed copy of Toni Morrison’s only known published poetry with artwork by Kara Walker (2002). These works are periodically on display at McCabe Library. 
 
-
-Housed in the Rare Book Room in McCabe Library, this collection currently contains examples from nearly 1,000 different presses, from historically significant presses like Kelmscott Press, Doves Press, the Roycrofters, Nonesuch Press, and Golden Cockerel Press, to the works of important contemporary book artisits such as Tia Blassingame, Islam Aly, Russell Maret, Maureen Cummins, Xu Bing, and Donald Glaister.
-
-
-While the Rare Book Room is not open to the public for browsing, [you can discover Swarthmore Special Collections in Tripod](http://tripod.swarthmore.edu/).
+If you are interested in seeing any of the works in person, contact librarian@swarthmore.edu.
 
 *Site supported by [Digital Scholarship / Swarthmore College Libraries](http://ds.swarthmore.edu/)*
