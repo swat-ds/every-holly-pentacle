@@ -21,6 +21,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy('src/assets/css/*css');
   eleventyConfig.addPassthroughCopy('src/assets/js/*js');
   eleventyConfig.addPassthroughCopy('src/assets/fonts');
+  eleventyConfig.addPassthroughCopy('src/assets/images');
   eleventyConfig.addPassthroughCopy( {'src/icons/*': '/'} );
 
   eleventyConfig.addPassthroughCopy( {'node_modules/viewerjs/dist/*min.css': '/assets/css/'} );
