@@ -21,6 +21,7 @@
       "inputDirectory": "src",
       "outputDirectory": "dist",
       "pathPrefix": "",
+      "fuseIndex": "/assets/js/collection.json",
       "loadJS": [
         { "nodePkg": "jquery" },
         { "nodePkg": "fuse.js", "target": "fuse.basic.min.js"},

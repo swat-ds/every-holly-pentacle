@@ -18,11 +18,14 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addWatchTarget('src/_sass/');
 
   /* * * passthrough paths * * */
-  eleventyConfig.addPassthroughCopy('src/assets');
+  eleventyConfig.addPassthroughCopy('src/assets/css/*css');
+  eleventyConfig.addPassthroughCopy('src/assets/js/*js');
+  eleventyConfig.addPassthroughCopy('src/assets/fonts');
   eleventyConfig.addPassthroughCopy( {'src/icons/*': '/'} );
-  eleventyConfig.addPassthroughCopy( {'src/_data/*.json': '/assets/js/'} );
+
   eleventyConfig.addPassthroughCopy( {'node_modules/viewerjs/dist/*min.css': '/assets/css/'} );
   eleventyConfig.addPassthroughCopy( {'node_modules/plyr/dist/*min.css': '/assets/js/'} );
+
   // adds any node packages in settings.json build.loadJS array
   settings.build.loadJS.forEach( (d) => {
     if (d.nodePkg) {
@@ -47,8 +50,12 @@ module.exports = function(eleventyConfig) {
       return fs.readdirSync(`node_modules/${d}/dist`)
                 .filter( d => d.includes('.min.js'))[0]
   });
-  // [h/t @edjw](https://edjohnsonwilliams.co.uk/2019/05/04/replicating-jekylls-markdownify-filter-in-nunjucks-with-eleventy/)
   eleventyConfig.addFilter( 'markdownify', d => md.render(d || '') );
+  // [h/t @edjw](https://edjohnsonwilliams.co.uk/2019/05/04/replicating-jekylls-markdownify-filter-in-nunjucks-with-eleventy/)
+
+  eleventyConfig.addFilter('jsonify', (d) => {
+    return JSON.stringify(d);
+  });
 
   eleventyConfig.on('beforeBuild', () => {
     // Compile Sass

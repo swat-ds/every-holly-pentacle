@@ -1,12 +1,16 @@
+---
+permalink: /assets/js/main.js
+---
 /*
  *
  * minimal jquery animations for landing page
  *
  */
-// until I figure out a way to simply grab global variables
-const pathPrefix = 'https://ds-pages.swarthmore.edu/dev/sublime-miscellany';
-// const pathPrefix = '';
-const thumbEndpoint = 'https://ds-pages.swarthmore.edu/sublime-miscellany/works/thumbs';
+
+const assetsURL = '{{ site.assets_url }}';
+const pathPrefix = '{{ site.build.pathPrefix }}';
+const fuseIndex = '{{ site.build.fuseIndex }}';
+const thumbsPath = 'thumbs';
 
 // scroll view jQuery function
 $.fn.scrollView = function() {
@@ -48,9 +52,9 @@ $(function(){
         // ignoreLocation: false,
         // ignoreFieldNorm: false,
         keys: [
-        "fields.Work",
-        "fields.Author",
-        "fields.Description"
+        "Work",
+        "Author",
+        "Description"
         ]
     }
 
@@ -65,9 +69,8 @@ $(function(){
     });
 
     // Initialize fuse.js
-    $.getJSON(`${pathPrefix}/assets/js/works.json`).then( (data) => {
-        data.forEach( (d,i) => { d.id = String(i+1).padStart(3,'000');} );
-        fuse = new Fuse(data, fuseOptions);
+    $.getJSON(fuseIndex).then( (d) => {
+        fuse = new Fuse(d.items, fuseOptions);
         $searchBar.on('input', (e) => {
             e.preventDefault();
             $searchResults.fadeOut(100).empty();
@@ -75,10 +78,10 @@ $(function(){
                 let result = `
 <li>
 <a class="row" href="${pathPrefix}/items/${d.item.id}.html">
-<div class="column work-thumbnail" style="background-image: url(${thumbEndpoint}/${d.item.fields.Photos[0].split('.')[0]}-sm.jpg);" alt="thumbnail of"></div>
+<div class="column work-thumbnail" style="background-image: url(${assetsURL}${thumbsPath}/${d.item.Photos[0].split('.')[0]}-sm.jpg);" alt="thumbnail of"></div>
 <div class="column">
-<span class="work-title">${d.item.fields.Work}</span>
-<span class="work-author">${d.item.fields.Author}</span>
+<span class="work-title">${d.item.Work}</span>
+<span class="work-author">${d.item.Author}</span>
 </div>
 </a>
 </li>
