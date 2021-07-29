@@ -5,7 +5,7 @@ classes: ['header','about']
 headerCaption:
 permalink: /about/
 headerImage: [
-  "url('/dev/sublime-miscellany/assets/images/butterfly-about.png')"
+  "url('/sublime-miscellany/assets/images/butterfly-about.jpg')"
 ]
 ---
 

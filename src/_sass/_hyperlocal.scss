@@ -93,37 +93,37 @@ main > section.container {
 // Footer
 footer {
 
-    border-top: 2px solid $title-color;
+    background-color: $background-color;
+    padding-top: 4rem;
+    text-align: center;
 
     .row {
-        justify-content: flex-end;
+        justify-content: flex-start;
     }
 
     .row p.column {
-        padding-top: 2rem;
-        max-width: 33%;
-
-        font-size: 1.6rem;
+        font-size: 2rem;
         letter-spacing: 0;
         line-height: 1.4;
 
-        @media screen and (min-width: 80rem) {
-            padding-top: 6rem;
-            padding-bottom: 5rem;
+        a {
+            color: #fff;
         }
     }
 
-    p.footer-copyright {
-        text-align: left;
-        margin-left: 0;
-        margin-right: auto;
-    }
-
     p.footer-library.column {
-        max-width: 22rem;
-        padding-top: 1.8rem;
         img {
             max-width: 22rem;
+        }
+    }
+
+    @media screen and (min-width: 40rem) {
+        text-align: unset;
+        #cc {
+            max-width: 10%;
+        }
+        p.footer-library.column {
+            text-align: right;
         }
     }
 }
@@ -132,13 +132,22 @@ footer {
 .header header {
 
     position: relative;
+    background: $background-color;
     background-attachment: fixed;
+    background-size: cover;
     background-repeat: no-repeat;
     box-shadow: inset 0rem -.5rem 2.3rem rgba(#ddd,.75);
 
     #masthead h1 {
-        padding-top: 4.6rem * 6;
+        position: relative;
+        display: inline;
         font-weight: bold;
+        top: 4.6rem * 6;
+        color: #fff;
+        padding: .5rem;
+        margin-left: -.5rem;
+        background-color: rgba(darken($background-color, 5%),.75);
+        border-radius: 2px;
     }
 
     span.caption {
@@ -160,12 +169,14 @@ footer {
     }
 
     @media screen and (min-width: 40rem) {
-        background-size: contain;
         top: 0rem; 
     }
 
     @media screen and (min-width: 80rem) {
-        background-size: cover, contain;
+        #masthead h1 {
+            background-color: unset;
+        }
+
     }
 }
 
@@ -192,43 +203,59 @@ footer {
 }   
 
 .about header {
-    background-color: $background-color;
-    background-size: contain;
-    height: 4.6rem * 8;
+    height: 4.6rem * 9;
+    background-position: center 15%;
 
-    #masthead h1 {
-        color: #fff;
-        margin-bottom: 0;
+    @media screen and (min-width: 40rem) {
+        background-size: 50%;
+        background-position: center 60%;
     }
     @media screen and (min-width: 40rem) {
-        background-size: 20%;
-        background-position: 30% 10%;
+        background-size: contain;
+        background-position: center -10%;
     }
 }
 
 // Splash
 .splash header {
     height: 100vh;
-    background-position: center bottom;
-    background-color: $background-color;
+    background-size: cover;
+    background-position: 100% top;
 
     #masthead h1 { 
-        padding-top: 4.6rem * 2;
+        display: block;
+        max-width: 14 * 4.6rem;
+        top: 4.6 * 2rem;
         font-size: 4.6rem * 2;
-        color: #fff;
         font-weight: normal;
+        padding-bottom: .25rem;
     }
 
     #masthead h1 + span {
+        display: inline-block;
+        position: relative;
+        top: 4.6 * 2rem;
         color: #fff;
         font-size: 3.3rem;
+        padding: .5rem;
+        margin-left: -.5rem;
+        background-color: rgba(darken($background-color, 5%),.75);
+        border-radius: 2px;
     }
 
-    @media screen and (min-width: 40rem){
-        #masthead h1 { font-size: 4.6rem * 3; }
+    @media screen and (min-width: 80rem){
         max-height: 4.6rem * 11;
-        background-size: 60%;
-        background-position: 110% 30%;    
+        background-size: contain;
+        #masthead h1 { 
+            font-size: 4.6rem * 3;
+        }
+
+        #masthead  h1, 
+        #masthead  h1 + span {
+            top: 4.6rem;
+            background-color: unset;
+        }
+
     }
 }
 

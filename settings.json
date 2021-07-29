@@ -19,7 +19,8 @@
   "build": {
       "inputDirectory": "src",
       "outputDirectory": "dist",
-      "pathPrefix": "/dev/sublime-miscellany",
+      "pathPrefix": "/sublime-miscellany",
+      "fuseIndex": "/assets/js/collection.json",
       "loadJS": [
         { "nodePkg": "jquery" },
         { "nodePkg": "fuse.js", "target": "fuse.basic.min.js"},

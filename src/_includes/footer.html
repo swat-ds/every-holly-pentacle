@@ -1,15 +1,18 @@
-<footer class="container">
+<footer>
+  <div class="container">
   <div class="row">
-  <p class="column footer-copyright">&#169;{{ "now" | date: "%Y" }} <a href="https://swarthmore.edu">Swarthmore College</a>
+    <p class="column" id="cc">
+    <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a>
   </p>
   <p class="column">
-    {{ site.footer.text | markdownify }}
+    <a href="https://swarthmore.edu/libraries">Swarthmore College Libraries</a>
   </p>
   <p class="column footer-library"><a href="https://swarthmore.edu/libraries"> 
     <img src="{{ site.footer.image | url }}" alt="Swarthmore College Libraries logo">
     </a>
   </p>
 
+  </div>
   </div>
 </footer>
 </main>
